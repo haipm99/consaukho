@@ -1,0 +1,77 @@
+﻿@page
+@model ConSauKho.WebClient.Pages.Admin.LoginPageModel
+@{
+    ViewData["Title"] = "LoginPage";
+}
+@section style {
+    <style>
+        body {
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px rgba(0,0,0,0.2);
+        }
+
+        .input-group-prepend:focus {
+            box-shadow: none;
+        }
+
+        .alert.alert-danger {
+            transition: visibility 0.5s;
+            visibility: hidden;
+        }
+
+        .active {
+            visibility: visible !important;
+        }
+    </style>
+}
+@section title {
+    <title>Login Page</title>
+}
+@section script {
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", function (event) {
+            event.preventDefault();
+            $('.alert.alert-danger').addClass("active");
+            setTimeout(() => $('.alert.alert-danger').removeClass("active"), 2000);
+        });
+    </script>
+}
+<div class="alert alert-danger" role="alert">
+    A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+<div class="container">
+    <div class="card mx-auto text-center col-8">
+        <div class="card-header mx-auto mt-4">
+            <span>
+                <img src="~/images/green-icon.png" class="w-25" alt="Logo">
+            </span>
+            <h5>Con Sâu Khô</h5>
+        </div>
+        <div class="card-body">
+            <form action="#" method="post">
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" name="email" class="form-control" placeholder="Username">
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-unlock"></i></span>
+                    </div>
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" id="btnSubmit" name="btn" value="Login"
+                           class="btn btn-primary col-6 p-2">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
