@@ -93,36 +93,43 @@ namespace ConSauKho.WebApi.Controllers
             }
             else
             {
+                if (repo.Get().Count == 0)
+                {
+                    byte[] newSalt = new byte[128 / 8];
+                    using (var rng = RandomNumberGenerator.Create())
+                    {
+                        rng.GetBytes(newSalt);
+                    }
+                    string saltSave = "";
+                    for (int i = 0; i < newSalt.Length; i++)
+                    {
+                        saltSave = saltSave + newSalt[i] + " ";
+                    }
+                    //Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
+                    // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
+                    string hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                        password: model.Password,
+                        salt: newSalt,
+                        prf: KeyDerivationPrf.HMACSHA1,
+                        iterationCount: 10000,
+                        numBytesRequested: 256 / 8));
+                    var newUser = new Users
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Username = model.Username,
+                        Password = hashedPassword,
+                        Salt = saltSave,
+                        Fullname = model.Username,
+                    };
+                    repo.Create(newUser);
+                    _uow.SaveChanges();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Username or password wrong.");
+                }
 
-                byte[] newSalt = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(newSalt);
-                }
-                string saltSave = "";
-                for (int i = 0; i < newSalt.Length; i++)
-                {
-                    saltSave = saltSave + newSalt[i] + " ";
-                }
-                //Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
-                // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
-                string hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                    password: model.Password,
-                    salt: newSalt,
-                    prf: KeyDerivationPrf.HMACSHA1,
-                    iterationCount: 10000,
-                    numBytesRequested: 256 / 8));
-                var newUser = new Users
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Username = model.Username,
-                    Password = hashedPassword,
-                    Salt = saltSave,
-                    Fullname = model.Username,
-                };
-                repo.Create(newUser);
-                _uow.SaveChanges();
-                return Ok(newUser);
             }
         }
     }

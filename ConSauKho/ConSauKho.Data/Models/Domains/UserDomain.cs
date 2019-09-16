@@ -2,6 +2,7 @@
 using ConSauKho.Data.Models.Views;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ConSauKho.Data.Models.Domains
@@ -26,6 +27,11 @@ namespace ConSauKho.Data.Models.Domains
         public Users Login(UserLoginModel model)
         {
             return uow.GetService<IUsersRepository>().CheckLogin(model.Username, model.Password);
+        }
+
+        public List<Users> Get()
+        {
+            return uow.GetService<IUsersRepository>().Get().ToList();
         }
     }
 }
