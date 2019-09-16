@@ -73,14 +73,29 @@
             btnSubmit.addEventListener("click", function (event) {
                 // check logic
                 event.preventDefault();
+                submit();
                 alertBg.classList.add("blur");
                 alertBar.classList.remove("fade");
                 setTimeout(() => {
                     alertBg.classList.remove("blur");
                     alertBar.classList.add("fade");
                 }, 1500);
-            })
+            });
         })();
+        function submit() {
+            const username = $('input[name=username]')[0].value;
+            const password = $('input[name=password]')[0].value;
+            const data = JSON.stringify({ username: username, password: password });
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:52080/api/Login/login',
+                headers: { "content-type": "application/json" },
+                data: data,
+                success: (res) => {
+                    
+                }
+            });
+        }
     </script>
 }
 <div class="alert-bg">
@@ -101,12 +116,12 @@
                 <h5>Con Sâu Khô</h5>
             </div>
             <div class="card-body">
-                <form action="#" method="post">
+                <form method="post">
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                         </div>
-                        <input type="text" name="email" class="form-control" placeholder="Username">
+                        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
                     </div>
 
                     <div class="input-group form-group">
