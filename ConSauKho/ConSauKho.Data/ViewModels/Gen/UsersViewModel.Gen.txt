@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConSauKho.Data.Global;
+using ConSauKho.Data.Models;
+using Newtonsoft.Json;
+
+namespace ConSauKho.Data.ViewModels
+{
+	public partial class UsersViewModel: BaseViewModel<Users>
+	{
+		//[JsonProperty("id")]
+		public string Id { get; set; }
+		//[JsonProperty("fullname")]
+		public string Fullname { get; set; }
+		//[JsonProperty("password")]
+		public string Password { get; set; }
+		//[JsonProperty("salt")]
+		public string Salt { get; set; }
+		//[JsonProperty("username")]
+		public string Username { get; set; }
+		
+		public UsersViewModel(Users entity) : base(entity)
+		{
+		}
+		
+		public UsersViewModel()
+		{
+		}
+		
+	}
+	
+	public partial class UpdateUsersViewModel: BaseUpdateViewModel<UpdateUsersViewModel, Users>
+	{
+		//[JsonProperty("id")]
+		public Wrapper<string> Id { get; set; }
+		//[JsonProperty("fullname")]
+		public Wrapper<string> Fullname { get; set; }
+		//[JsonProperty("password")]
+		public Wrapper<string> Password { get; set; }
+		//[JsonProperty("salt")]
+		public Wrapper<string> Salt { get; set; }
+		//[JsonProperty("username")]
+		public Wrapper<string> Username { get; set; }
+		
+	}
+}
