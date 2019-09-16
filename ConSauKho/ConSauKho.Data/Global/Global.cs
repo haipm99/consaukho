@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ConSauKho.Data.Models.Domains;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,8 @@ namespace ConSauKho.Data.Global
             {
 
             });
+
+            services.AddScoped<UserDomain>();
 
             ConfigureAutomapper();
             ConfigureIoC(services);

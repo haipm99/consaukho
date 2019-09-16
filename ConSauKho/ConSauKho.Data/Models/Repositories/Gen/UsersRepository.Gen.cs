@@ -18,9 +18,9 @@ namespace ConSauKho.Data.Models.Repositories
 		public UsersRepository(DbContext context) : base(context)
 		{
 		}
-		
-		#region CRUD area
-		public override Users FindById(string key)
+
+        #region CRUD area
+        public override Users FindById(string key)
 		{
 			var entity = dbSet.FirstOrDefault(
 				e => e.Id == key);
@@ -33,7 +33,6 @@ namespace ConSauKho.Data.Models.Repositories
 				e => e.Id == key);
 			return entity;
 		}
-		
-		#endregion
-	}
+        #endregion
+    }
 }
