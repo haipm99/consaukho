@@ -1,0 +1,122 @@
+﻿@page
+@model ConSauKho.WebClient.Pages.Admin.LoginPageModel
+@{
+
+}
+@section style {
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.1);
+            min-width: 350px;
+        }
+
+        .alert-bg {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color .2s linear;
+        }
+
+        .blur {
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .alert.alert-danger {
+            font-size: 1.2rem;
+        }
+
+            .alert.alert-danger i {
+                display: block;
+                font-size: 6rem;
+            }
+
+        .row {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        span.input-group-text {
+            width: 2.5rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: none;
+            background-color: rgba(253, 231, 171, 0.192);
+        }
+    </style>
+}
+@section title {
+    <title>Login Page</title>
+}
+@section script {
+    <script>
+        (() => {
+            const alertBg = $('.alert-bg')[0];
+            const alertBar = $('.alert.alert-danger')[0];
+            const btnSubmit = $('#btnSubmit')[0];
+            btnSubmit.addEventListener("click", function (event) {
+                // check logic
+                event.preventDefault();
+                alertBg.classList.add("blur");
+                alertBar.classList.remove("fade");
+                setTimeout(() => {
+                    alertBg.classList.remove("blur");
+                    alertBar.classList.add("fade");
+                }, 1500);
+            })
+        })();
+    </script>
+}
+<div class="alert-bg">
+    <div class="alert alert-danger col-6 text-center fade in" role="alert">
+        <i class="fa fa-times-circle"></i>
+        Sorry ! Password or username is invalid.
+        <br>
+        Please try again !
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card mx-auto text-center col-md-8 col-xs-10">
+            <div class="card-header mx-auto mt-4">
+                <span>
+                    <img src="~/images/green-icon.png" class="w-25" alt="Logo">
+                </span>
+                <h5>Con Sâu Khô</h5>
+            </div>
+            <div class="card-body">
+                <form action="#" method="post">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <input type="text" name="email" class="form-control" placeholder="Username">
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-unlock"></i></span>
+                        </div>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" id="btnSubmit" name="btn" value="Login"
+                               class="btn btn-primary col-6 p-2">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
