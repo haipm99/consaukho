@@ -16,7 +16,9 @@
   <ItemGroup>
     <Folder Include="Pages\Customer\" />
     <Folder Include="Pages\User\" />
+    <Folder Include="wwwroot\css\css-admin\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\js-admin\" />
   </ItemGroup>
 
 </Project>

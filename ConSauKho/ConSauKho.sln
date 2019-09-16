@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29209.62
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConSauKho", "ConSauKho\ConSauKho.csproj", "{A81B5394-32CD-4874-81EC-5E821166F0F9}"
 EndProject
@@ -10,11 +10,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConSauKho.WebClient", "ConSauKho.WebClient\ConSauKho.WebClient.csproj", "{CB35AD98-B4F5-4826-9C2B-4CAD6EDCD49D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConSauKho.Data", "ConSauKho.Data\ConSauKho.Data.csproj", "{9298C72E-1B3C-4327-8A90-45A8D77AB31C}"
-<<<<<<< HEAD
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "Generator\Generator.csproj", "{2FC021F5-795F-4C0D-98C1-1AA524DA25BB}"
-=======
->>>>>>> origin/f-login-thinhnp
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator", "Generator\Generator.csproj", "{2FC021F5-795F-4C0D-98C1-1AA524DA25BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

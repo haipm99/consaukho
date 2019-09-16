@@ -1,7 +1,8 @@
 ﻿@page
 @model ConSauKho.WebClient.Pages.Admin.LoginPageModel
 @{
-
+    ViewData["Title"] = "Login Page";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 @section style {
     <style>
@@ -61,9 +62,7 @@
         }
     </style>
 }
-@section title {
-    <title>Login Page</title>
-}
+
 @section script {
     <script>
         (() => {
