@@ -116,7 +116,7 @@ namespace ConSauKho.WebApi.Controllers
                 {
                     Id = Guid.NewGuid().ToString(),
                     Username = model.Username,
-                    Password = hashed,
+                    Password = hashedPassword,
                     Salt = saltSave,
                     Fullname = model.Username,
                 };
@@ -124,7 +124,6 @@ namespace ConSauKho.WebApi.Controllers
                 _uow.SaveChanges();
                 return Ok(newUser);
             }
-            return Ok();
         }
     }
 }
